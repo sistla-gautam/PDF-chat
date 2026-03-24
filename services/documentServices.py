@@ -1,0 +1,1 @@
+# companion file for all the document services

@@ -1,11 +1,5 @@
 from fastapi import FastAPI, Path
+from routes.documentRoutes import documentRouter
 
 app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"Hello"}
-
-@app.get("/{id}")
-def read_root(id:int = Path(..., description="Something")):
-    return {id}
+app.include_router(documentRouter)
