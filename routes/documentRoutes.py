@@ -1,11 +1,16 @@
-# This document will be for the different routes on the document
-
-
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from pydantic import BaseModel
+from services.documentServices import document_upload_service
 
 
 documentRouter = APIRouter()
 
 @documentRouter.post("/document")
-def document_upload():
-    return {"document":"uploaded"}
+async def document_upload(req: Request):
+    headers = req.headers
+    body = await req.body()
+    print(headers)
+
+    print(body.decode())
+
+    return document_upload_service()
